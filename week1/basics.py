@@ -1,3 +1,4 @@
+import random
 # EX Letter Grade
 def grade(score):
     if(score >= 90):
@@ -54,3 +55,20 @@ def check_password(password):
 
 password=input('Enter the Password = ')
 print (check_password(password))
+
+def number_guessing_game():
+    attempts=0
+    computer_number=random.randint(1,100)
+    while True:
+        number=int(input('Enter the Number = '))
+        attempts+=1
+        if number>computer_number:
+            print('High')
+        elif number<computer_number:
+            print('low')
+        else:
+            print('Correct !')
+            print(f'Attempts: {attempts}')
+            break
+
+number_guessing_game()
