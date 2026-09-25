@@ -110,15 +110,7 @@ def word_counter():
 
     sorted_words=sorted(words_count.items(),key=lambda item:item[1],reverse=True)
 
+    for word, count in sorted_words[:10]: 
+        print(f"{word} -> {count}")
+
 word_counter()
-
-def contacts_cleaner(name,email,contact_no):
-    contacts = {
-        "name":name,
-        "email":email,
-        "contact_no":contact_no
-    }
-
-    cleaned_contact=[]
-
-    for contact in contacts:
