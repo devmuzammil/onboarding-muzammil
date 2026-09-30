@@ -15,5 +15,13 @@ def timer(func):
 def slow_function():
     time.sleep(2)
 
-
 slow_function()
+
+
+def read_csv(filename):
+    with open('data.csv','r')as file:
+        for line in file:
+            yield line
+
+for line in read_csv("data.csv"):
+    print(line)
