@@ -1,15 +1,11 @@
-from django.urls import path
-from .views import(
-    TaskListCreateView,
-    TaskRetrieveUpdateDestroyListView,
-    ProjectListView,
-    ProjectRetrieveUpdateDestroyListView
-)
+from django.urls import path,include
+from rest_framework.routers import DefaultRouter
+from .views import TaskViewSet,ProjectViewSet
 
+router=DefaultRouter()
+router.register("api/v1/tasks",TaskViewSet,basename="task")
+router.register("api/v1/projects",ProjectViewSet,basename="project")
 
 urlpatterns=[
-    path("api/v1/tasks/",TaskListCreateView.as_view(),name="task-list"),
-    path("api/v1/tasks/<int:pk>/",TaskRetrieveUpdateDestroyListView.as_view(),name="task-detail"),
-    path("api/v1/projects/",ProjectListView.as_view(),name="project-list"),
-    path("api/v1/projects/<int:pk>/",ProjectRetrieveUpdateDestroyListView.as_view(),name="project-details"),
+    path("",include(router.urls))
 ]
