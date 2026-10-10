@@ -19,7 +19,8 @@ class TaskSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Task
-        fields = ["id","title","description","completed","due_date","project","project_name","tags","tag_names",]
+        fields = ["id","title","description","completed","due_date","project","project_name","tags","tag_names","owner"]
+        read_only_fields=['id','owner']
 
     def validate_due_date(self, value):
         if value < timezone.now():
@@ -61,3 +62,4 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ["id", "name"]
+        read_only_fields=["id"]
